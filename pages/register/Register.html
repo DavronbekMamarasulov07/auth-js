@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="../../css/styles.min.css">
+</head>
+<body>
+  <div class="register">
+    <div class="form-container">
+      <a href="../../index.html" class="form-title">
+        Register
+      </a>
+      <form id="register-form" class="form">
+        <label class="form__label">
+          Username
+          <input required id="register-input--username"  class="form__input" type="text" placeholder="Enter your new username">
+        </label>
+        <label class="form__label">
+          Email
+          <input required id="register-input--email" class="form__input" type="email" placeholder="Enter your new email">
+        </label>
+        <label class="form__label">
+          password
+          <div class="form-password__content">
+            <input required id="register-input--password" class="password" type="password" placeholder="Enter your new password">
+            <img id="form__img" class="form__image" src="../../images/Eye_View-removebg-preview.png" alt="">
+          </div>
+        </label>
+
+        <button class="form__btn" type="submit">
+          Register
+        </button>
+      </form>
+      <p class="form__text">Already have an account? <a class="form__link" href="../login/Login.html">Login</a></p>
+    </div>
+  </div>
+
+
+  <div  class="form-message">
+    <p class="form-message__text">
+      New user successfully registered
+    </p>
+  </div>
+
+  <script src="./Register.js"></script>
+</body>
+</html>
