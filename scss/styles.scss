@@ -1,11 +1,11 @@
-@import "../pages/login/Login";
-@import "../pages/register/Register";
+@import "./auth";
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+
 }
 
 a{
@@ -22,6 +22,9 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(https://i.pinimg.com/originals/5a/e9/00/5ae900749149ac7c3c8bf04c22971646.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 
     .auth{
       display: flex;
