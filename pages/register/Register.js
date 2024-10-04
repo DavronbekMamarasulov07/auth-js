@@ -20,7 +20,7 @@ const handlePasswordVisible = () => {
 
 
 
-let newUsers = []
+
 function FormData(username, email, password) {
   this.username = username;
   this.email = email;
@@ -34,13 +34,12 @@ const handleFormSubmit = (e) => {
   const registerNewEmail = registerInputEmail.value;
   const registerNewPassword = registerInputPassword.value;
 
-  console.log(registerNewUsername, registerNewEmail, registerNewPassword);
 
   const formData = new FormData(registerNewUsername, registerNewEmail, registerNewPassword);
+  const existingUsers = JSON.parse(localStorage.getItem("new-user")) || [];
 
-  const user = JSON.parse(localStorage.getItem("new-user"))
 
-  const isUser = user.filter((user) => user.email === registerNewEmail)
+  const isUser = existingUsers.filter(user => user.email === registerNewEmail);
 
   if(isUser.length > 0) {
     errorMessage.classList.add("form-error-message--active")
@@ -50,8 +49,10 @@ const handleFormSubmit = (e) => {
   }
 
   else{
-      newUsers.push(formData);
-      JSON.stringify(localStorage.setItem("new-user", JSON.stringify(newUsers)));
+      
+      // console.log(newUsers)
+      existingUsers.push(formData);
+      localStorage.setItem("new-user", JSON.stringify(existingUsers))
       regiserMessage.classList.add("form-message--active");
 
       setTimeout(() => {
@@ -59,14 +60,9 @@ const handleFormSubmit = (e) => {
       },3000)
     setTimeout(() => {
         window.location.href = "../login/Login.html";
-    },2000)
+      },2000)
       e.target.reset();
-  }
-
-
-
-
-
+    }
   
   
 };
