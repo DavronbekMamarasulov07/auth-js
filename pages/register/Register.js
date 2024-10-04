@@ -4,6 +4,7 @@ const registerInputEmail = document.getElementById("register-input--email");
 const registerInputPassword = document.getElementById("register-input--password");
 const regiserMessage = document.querySelector(".form-message");
 const registerFormImage = document.getElementById("form__img");
+const errorMessage = document.querySelector(".form-error-message");
 
 
 const handlePasswordVisible = () => {
@@ -37,16 +38,37 @@ const handleFormSubmit = (e) => {
 
   const formData = new FormData(registerNewUsername, registerNewEmail, registerNewPassword);
 
-  newUsers.push(formData);
+  const user = JSON.parse(localStorage.getItem("new-user"))
 
-  JSON.stringify(localStorage.setItem("new-user", JSON.stringify(newUsers)));
+  const isUser = user.filter((user) => user.email === registerNewEmail)
+
+  if(isUser.length > 0) {
+    errorMessage.classList.add("form-error-message--active")
+    setTimeout(() => {
+      errorMessage.classList.remove("form-error-message--active")
+    },3000)
+  }
+
+  else{
+      newUsers.push(formData);
+      JSON.stringify(localStorage.setItem("new-user", JSON.stringify(newUsers)));
+      regiserMessage.classList.add("form-message--active");
+
+      setTimeout(() => {
+        regiserMessage.classList.remove("form-message--active");
+      },3000)
+    setTimeout(() => {
+        window.location.href = "../login/Login.html";
+    },2000)
+      e.target.reset();
+  }
+
+
+
+
+
   
-  regiserMessage.classList.add("form-message--active");
-
-  setTimeout(() => {
-    regiserMessage.classList.remove("form-message--active");
-  },3000)
-   e.target.reset();
+  
 };
 
 registerForm.addEventListener("submit", handleFormSubmit);

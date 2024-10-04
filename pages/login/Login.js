@@ -53,6 +53,7 @@
     },1000)
     loginMessage.classList.add("form-message--active");
 
+    e.target.reset();
    
   } else {
     errorMessage.classList.add("form-error-message--active");
@@ -62,7 +63,6 @@
     }, 3000);
   }
   
-  e.target.reset();
 
 
     
