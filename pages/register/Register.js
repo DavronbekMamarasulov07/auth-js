@@ -45,7 +45,7 @@ const handleFormSubmit = (e) => {
 
   setTimeout(() => {
     regiserMessage.classList.remove("form-message--active");
-  },5000)
+  },3000)
    e.target.reset();
 };
 

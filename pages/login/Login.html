@@ -10,15 +10,15 @@
   <div class="content">
     <div class="form-container">
       <a class="form-title" href="../../index.html">Login</a>
-      <form class="form">
+      <form id="login-form" class="form">
           <label class="form__label" >
             Email
-            <input type="email" class="form__input" id="login-form__input" placeholder="Enter your email">
+            <input id="login-input--email" type="email" class="form__input" required placeholder="Enter your email">
           </label>
           <label class="form__label" >
             Password
             <div class="form-password__content">
-            <input required id="register-input--password" class="form__input password" type="password" placeholder="Enter your new password">
+            <input  required id="login-input--password" class=" password" type="password" placeholder="Enter your new password">
             <img id="form__img" class="form__image" src="../../images/Eye_View-removebg-preview.png" alt="">
           </div>
           </label>
@@ -30,5 +30,19 @@
       <p class="form__text">Don't have an account? <a class="form__link" href="../register/Register.html">Register</a></p>
     </div>
   </div>
+
+  <div class="form-message">
+    <p class="form-message__text">
+      You have successfully logged in to your account
+    </p>
+  </div>
+
+  <div class="form-error-message">
+    <p class="form-error-message__text">
+      Invalid email or password
+    </p>
+  </div>
+
+  <script src="./Login.js"></script>
 </body>
 </html>

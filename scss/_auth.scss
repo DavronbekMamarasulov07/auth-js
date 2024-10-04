@@ -186,3 +186,43 @@
       top: 30px;
     }
 }
+
+.form-error-message{
+  width: 100%;
+  background-color: rgba(178, 67, 67, 0.198);
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  text-align: center;
+  top: -100%;
+  position: absolute;
+  border-left: 5px solid rgb(173, 61, 61);
+  transition: .5s ease-in-out;
+
+  &__text{
+    margin-block: 10px;
+    font-size: 18px;
+  }
+
+
+  &::before{
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    transform: translateX(-50%);
+    background-image: url(https://www.freeiconspng.com/uploads/round-error-icon-16.jpg);
+    background-color: red;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    z-index: 10;
+    border-radius: 50%;
+  }
+
+    &--active{
+      top: 30px;
+    }
+}
