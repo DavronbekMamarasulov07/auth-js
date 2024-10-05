@@ -39,9 +39,39 @@ const handleFormSubmit = (e) => {
   const existingUsers = JSON.parse(localStorage.getItem("new-user")) || [];
 
 
-  const isUser = existingUsers.filter(user => user.email === registerNewEmail);
+  const isUser = existingUsers && existingUsers.filter(user => user.email === registerNewEmail);
 
-  if(isUser.length > 0) {
+  if(registerNewPassword.length < 5 ) {
+    errorMessage.classList.add("form-error-message--active")
+    errorMessage.textContent = "Password should be at least 5 characters long"
+
+    setTimeout(() => {
+      errorMessage.classList.remove("form-error-message--active")
+    },3000)
+
+  }
+
+  if(registerNewUsername.trim() === "" ) {
+    errorMessage.classList.add("form-error-message--active")
+    errorMessage.textContent = "Please fill in all the fields"
+
+    setTimeout(() => {
+      errorMessage.classList.remove("form-error-message--active")
+    },3000)
+
+  }
+  
+  else if(!isUser){
+    errorMessage.classList.add("form-error-message--active")
+    errorMessage.textContent = "User not found"
+
+    setTimeout(() => {
+      errorMessage.classList.remove("form-error-message--active")
+    },3000)
+
+  }
+
+  else if(isUser && isUser.length > 0) {
     errorMessage.classList.add("form-error-message--active")
     setTimeout(() => {
       errorMessage.classList.remove("form-error-message--active")
@@ -49,11 +79,9 @@ const handleFormSubmit = (e) => {
   }
 
   else{
-      
-      // console.log(newUsers)
-      existingUsers.push(formData);
-      localStorage.setItem("new-user", JSON.stringify(existingUsers))
-      regiserMessage.classList.add("form-message--active");
+    existingUsers.push(formData);
+    localStorage.setItem("new-user", JSON.stringify(existingUsers))
+    regiserMessage.classList.add("form-message--active");
 
       setTimeout(() => {
         regiserMessage.classList.remove("form-message--active");
@@ -62,7 +90,7 @@ const handleFormSubmit = (e) => {
         window.location.href = "../login/Login.html";
       },2000)
       e.target.reset();
-    }
+  }
   
   
 };

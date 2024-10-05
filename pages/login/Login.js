@@ -43,11 +43,32 @@
 
     newUsers.push(formData);
 
- console.log(user , newUsers)
 
-   const isUser = user.filter((user) => user.email === loginNewEmail && user.password === loginNewPassword);
+  const isUser = user &&  user.filter((user) => user.email === loginNewEmail && user.password === loginNewPassword);
 
-   if (isUser.length > 0) {
+  if(loginNewEmail === "" || loginNewPassword === "") {
+    errorMessage.classList.add("form-error-message--active")
+    errorMessage.textContent = "Please fill in all the fields"
+
+    setTimeout(() => {
+      errorMessage.classList.remove("form-error-message--active")
+    },3000)
+
+    e.target.reset();
+  }
+  
+  if(!isUser){
+    errorMessage.classList.add("form-error-message--active")
+    errorMessage.textContent = "User not found"
+
+    setTimeout(() => {
+      errorMessage.classList.remove("form-error-message--active")
+    },3000)
+
+    e.target.reset();
+  }
+
+   if (isUser && isUser.length > 0) {
     setTimeout(() => {
       window.location.href = "../../index.html";
     },1000)
